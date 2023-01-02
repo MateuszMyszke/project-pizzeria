@@ -52,11 +52,14 @@
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
 
+  renderInMenu(){
+    const thisProduct 
+  }
+
   class Product {
     constructor(id, data) {
       thisProduct.id = id;
       thisProduct.data = data;
-      
       const thisProduct = this;
       console.log('new Product: ', thisProduct);
     }
