@@ -88,19 +88,13 @@
 
     initAccordion(){
       const thisProduct = this;
-      /* find the clickable trigger (the element that should react to clicking) */
-      
-      /* START: add event listener to clickable trigger on event click */
+    
       thisProduct.accordionTrigger.addEventListener('click', function(event) {
-      /* prevent default action for event */
         event.preventDefault();
-        /* find active product (product that has active class) */
         const activeProduct = document.querySelector(classNames.menuProduct.wrapperActive);
-        /* if there is active product and it's not thisProduct.element, remove class active from it */
-        if(((activeProduct != null) && activeProduct.contains('active')) && (activeProduct != thisProduct.element)) {
+        if(((activeProduct !== null) && activeProduct.contains('active')) && (activeProduct !== thisProduct.element)) {
           activeProduct.classList.remove('active');
         }
-        /* toggle active class on thisProduct.element */
         thisProduct.element.classList.toggle('active');
       });
     }
@@ -145,17 +139,17 @@
           } else if (option.default) {
             price -= option.price;
           }
-          if(optionImage){
-            if(optionSelected){
-              optionImage.classList.add(classNames.menuProduct.imageVisible);
-            } else {
-              optionImage.classList.remove(classNames.menuProduct.imageVisible);
-            }
+          if(optionImage && optionSelected){
+            optionImage.classList.add(classNames.menuProduct.imageVisible);
+          } 
+          if(optionImage && !optionSelected){
+            optionImage.classList.remove(classNames.menuProduct.imageVisible);
           }
         }
-        
-        thisProduct.priceElem.innerHTML = price;
       }
+        
+      thisProduct.priceElem.innerHTML = price;
+      
     }
   }
 
