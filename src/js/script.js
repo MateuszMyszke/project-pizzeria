@@ -160,6 +160,8 @@
     constructor(element){
       const thisWidget = this;
       thisWidget.getElements(element);
+      thisWidget.initActions();
+      //thisWidget.setValue(thisWidget.input.value);
       console.log('AmountWidget:',thisWidget);
       console.log('constructor arguments:', element);
       
@@ -179,9 +181,32 @@
       // todo: add validation
       thisWidget.value = newValue;
       thisWidget.input.value = thisWidget.value;
-      if(thnewValue )
+      if(thisWidget.value !== newValue && !isNaN(newValue)){
+        thisWidget.value = newValue;
+      }
+    }
+
+    initActions(){
+      const thisWidget = this;
+      thisWidget.setValue(thisWidget.input.value);
+
+      thisWidget.element.input.addEventListener('change', function(){
+        thisWidget.value = thisWidget.element.input.value;
+      });
+
+      thisWidget.element.linkDecrease.addEventListener('click', function(event){
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value - 1);
+      });
+    
+      thisWidget.element.linkIncrease.addEventListener('click', function(event){
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value + 1);
+      });
     }
   }
+  
+  
 
   const app = {
     initMenu: function(){
