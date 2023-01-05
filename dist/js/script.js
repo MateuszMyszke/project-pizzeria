@@ -172,6 +172,15 @@
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
     }
+
+    setValue(value){
+      const thisWidget = this;
+      const newValue = parseInt(value);
+      // todo: add validation
+      thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;
+      if(thnewValue )
+    }
   }
 
   const app = {
