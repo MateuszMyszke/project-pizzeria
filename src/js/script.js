@@ -81,6 +81,7 @@
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
+    cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   };
 
   class Product{
@@ -325,9 +326,34 @@
       const generatedHTML = templates.cartProduct(menuProduct);
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       thisCart.dom.productList.appendChild(generatedDOM);
+      thisCart.products.push(menuProduct);
+      console.log('thisCart.products', thisCart.products);
     }
   }
   
+  class CartProduct {
+    constructor(menuProduct, element){
+      const thisCartProduct = this;
+      thisCartProduct.getElements(element);
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.data.name;
+      thisCartProduct.amount = menuProduct.amountWidget.value;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+      thisCartProduct.price = menuProduct.priceSingle * menuProduct.amountWidget.value;
+    }
+
+    getElements(element){
+      const thisCartProduct = this;
+      thisCartProduct.dom = {
+        wrapper: element,
+        amountWidgetElem: element.querySelector(select.cartProduct.widgetAmount),
+        price: element.querySelector(select.cartProduct.price),
+        edit: element.querySelector(select.CartProduct.edit),
+        remove: element.querySelector(select.cartProduct.remove)
+      };
+      thisCartProduct.dom.wrapper = element;
+    }
+  }
 
   const app = {
     initMenu: function(){
