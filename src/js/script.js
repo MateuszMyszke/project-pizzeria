@@ -244,8 +244,7 @@
       thisWidget.setValue(thisWidget.input.value);
 
       //thisWidget.setValue(thisWidget.input.value);
-      console.log('AmountWidget:',thisWidget);
-      console.log('constructor arguments:', element);
+      
       
     }
 
@@ -352,7 +351,6 @@
 
     init: function(){
       const thisApp = this;
-      console.log('settings:', settings);
       thisApp.initData();
       thisApp.initMenu();
       thisApp.initCart();
