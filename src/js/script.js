@@ -440,7 +440,7 @@
     initMenu: function(){
       const thisApp = this;
       for(let productData in thisApp.data.products){
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
     
@@ -458,8 +458,9 @@
           console.log('parsedResponse', parsedResponse);
 
           /* save parsedResponse as thisApp.data.products */
-
+          thisApp.data.products = parsedResponse;
           /* execute initMenu method */
+          app.initMenu();
         });
 
       console.log('thisApp.data', JSON.stringify(thisApp.data));
@@ -474,7 +475,6 @@
     init: function(){
       const thisApp = this;
       thisApp.initData();
-      thisApp.initMenu();
       thisApp.initCart();
     },
 
