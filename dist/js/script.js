@@ -398,7 +398,18 @@
         deliveryFee: settings.cart.defaultDeliveryFee,
         products: [],
       };
-
+      for(let prod of thisCart.products) {
+        payload.products.push(prod.getData());
+      }
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+    
+      fetch(url, options);
     }
   }
   
@@ -460,7 +471,19 @@
       });
     }
 
-    
+    getData(){
+      const thisCartProduct = this;
+      const productsForOrder = {
+        id: thisCartProduct.id,
+        amount:thisCartProduct.amount,
+        price: thisCartProduct.price,
+        priceSingle: thisCartProduct.priceSingle,
+        name: thisCartProduct.name,
+        params: thisCartProduct.params,
+      };
+      return productsForOrder;
+    }
+
   }
 
   const app = {
