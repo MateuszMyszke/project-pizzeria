@@ -509,13 +509,13 @@
     initData: function(){
       const thisApp = this;
       thisApp.data = {};
-      const url = settings.db.url + '/' + settings.db.products;
+      const url = settings.db.url + '/' + settings.db.products;  
 
-      fetch(url)
-        .then(function(rawResponse){
-          return rawResponse.json();
+      fetch(url) 
+        .then(function(rawResponse){ 
+          return rawResponse.json();  
         })
-        .then(function(parsedResponse){
+        .then(function(parsedResponse){   
           thisApp.data.products = parsedResponse;
           app.initMenu();
         });
