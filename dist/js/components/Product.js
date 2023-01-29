@@ -17,6 +17,14 @@ class Product{
 
   }
 
+  initAmountWidget(){
+    const thisProduct = this;
+    thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+    thisProduct.amountWidgetElem.addEventListener('updated', function(){
+      thisProduct.processOrder();
+    });
+  }
+  
   renderInMenu(){
     const thisProduct = this;
     const generatedHTML = templates.menuProduct(thisProduct.data);     
@@ -72,13 +80,7 @@ class Product{
     });
   }
 
-  initAmountWidget(){
-    const thisProduct = this;
-    thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-    thisProduct.amountWidgetElem.addEventListener('updated', function(){
-      thisProduct.processOrder();
-    });
-  }
+  
 
   processOrder(){
     const thisProduct = this;
@@ -115,7 +117,9 @@ class Product{
 
   addToCart(){
     const thisProduct = this;
-    // app.cart.add(thisProduct.prepareCartProduct());
+    
+    thisProduct.name = thisProduct.data.name;
+    thisProduct.amount = thisProduct.amountWidget.value;
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {

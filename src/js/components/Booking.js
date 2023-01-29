@@ -122,7 +122,6 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
-    console.log('thisBooking.booked', thisBooking.booked);
   }
   render(element){
     const thisBooking = this;
@@ -237,8 +236,9 @@ class Booking {
     fetch(url, options)
       .then(function (response) {
         return response.json();
-      }).then(function (parsedResponse) {
-        console.log('parsedResponse', parsedResponse);
+        
+      }) .catch(err => {`Error: ${err}`;})
+      .then(function (parsedResponse) {
         thisBooking.makeBooked(
           parsedResponse.date, 
           parsedResponse.hour, 
@@ -246,7 +246,7 @@ class Booking {
           parsedResponse.table
         );
         thisBooking.updateDOM();
-      });
+      }) .catch(err => {`Error: ${err}`;});
   }
 
 }
