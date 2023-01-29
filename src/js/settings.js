@@ -11,6 +11,7 @@ export const select = {
     pages: '#pages',
     booking: '.booking-wrapper',
     homePage: '.home-page-wrapper',
+    carousel: '.carousel',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -55,6 +56,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    homeLinks: '.home-links a',
   },
   cart: {
     productList: '.cart__order-summary',
