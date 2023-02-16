@@ -1,2 +1,5 @@
 node_modules
-/dist
+
+# Nuxt.js build / generate output
+.nuxt
+dist
