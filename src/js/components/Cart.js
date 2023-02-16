@@ -75,10 +75,10 @@ class Cart{
     fetch(url, options)
       .then(function(response){
         return response.json();
-      }).catch(err => {`Error: ${err}`;})
+      }).catch(err => {alert(`Error: ${err}`);})
       .then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
-      }).catch(err => {`Error: ${err}`;});
+      }).catch(err => {alert(`Error: ${err}`);});
   }
 
   add(menuProduct){
@@ -97,7 +97,7 @@ class Cart{
     thisCart.subtotalPrice = 0;
 
     for(let cartProduct of thisCart.products){
-      
+  
       thisCart.totalNumber += cartProduct.amount;
       
       thisCart.subtotalPrice += cartProduct.price;

@@ -237,7 +237,7 @@ class Booking {
       .then(function (response) {
         return response.json();
         
-      }) .catch(err => {`Error: ${err}`;})
+      }) .catch(err => {alert(`Error: ${err}`);})
       .then(function (parsedResponse) {
         thisBooking.makeBooked(
           parsedResponse.date, 
@@ -246,7 +246,7 @@ class Booking {
           parsedResponse.table
         );
         thisBooking.updateDOM();
-      }) .catch(err => {`Error: ${err}`;});
+      }) .catch(err => {alert(`Error: ${err}`);});
   }
 
 }
