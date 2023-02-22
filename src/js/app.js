@@ -64,11 +64,12 @@ const app = {
     fetch(url) 
       .then(function(rawResponse){ 
         return rawResponse.json();  
-      }).catch(err => {alert(`Error: ${err}`);})
+      })
       .then(function(parsedResponse){   
         thisApp.data.products = parsedResponse;
         app.initMenu();
-      });
+      })
+      .catch(err => {alert(`Error: ${err}`);});
   },
 
   initCart: function(){
