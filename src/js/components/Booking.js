@@ -246,7 +246,7 @@ class Booking {
           parsedResponse.table
         );
         thisBooking.updateDOM();
-      }) .catch(err => {alert(`Error: ${err}`);});
+      });
   }
 
 }

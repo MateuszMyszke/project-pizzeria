@@ -68,7 +68,7 @@ const app = {
       .then(function(parsedResponse){   
         thisApp.data.products = parsedResponse;
         app.initMenu();
-      }).catch(err => {alert(`Error: ${err}`);});
+      });
   },
 
   initCart: function(){

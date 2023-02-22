@@ -78,7 +78,7 @@ class Cart{
       }).catch(err => {alert(`Error: ${err}`);})
       .then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
-      }).catch(err => {alert(`Error: ${err}`);});
+      });
   }
 
   add(menuProduct){
